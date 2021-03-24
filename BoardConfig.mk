@@ -57,6 +57,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 
 # HIDL
 DEVICE_FRAMEWORK_MANIFEST_FILE := $(DEVICE_PATH)/framework_manifest.xml
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
 
 # Partitions
 TARGET_COPY_OUT_VENDOR := vendor
