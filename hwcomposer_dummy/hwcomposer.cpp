@@ -132,6 +132,7 @@ static void check_sync_fds(size_t numDisplays, hwc_display_contents_1_t** displa
 {
     unsigned int i, j;
     for (i = 0; i < numDisplays; i++) {
+        ALOGW("display %d", i);
         hwc_display_contents_1_t* list = displays[i];
         if (list->retireFenceFd >= 0) {
             ALOGW("retireFenceFd[%u] was %d", i, list->retireFenceFd);
@@ -139,6 +140,7 @@ static void check_sync_fds(size_t numDisplays, hwc_display_contents_1_t** displa
         }
 
         for (j = 0; j < list->numHwLayers; j++) {
+            ALOGW("layer %d", j);
             hwc_layer_1_t* layer = &list->hwLayers[j];
             if (layer->acquireFenceFd >= 0) {
                 ALOGW("acquireFenceFd[%u][%u] was %d, closing", i, j, layer->acquireFenceFd);
@@ -168,7 +170,7 @@ static int hwc_set(hwc_composer_device_1_t* dev, size_t numDisplays,
         dump_layer(layer);
     }
 
-    check_sync_fds(numDisplays, displays);
+    check_sync_fds(1/*numDisplays*/, displays);
 
     return 0;
 }
